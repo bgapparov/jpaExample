@@ -4,6 +4,9 @@
     <persistence-unit name="NewPersistenceUnit">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>model.Person</class>
+        <class>model.Employee</class>
+        <class>model.Costumer</class>
+        <class>model.Departament</class>
         <properties>
             <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/LabWeekend?zeroDateTimeBehavior=CONVERT_TO_NULL&amp;serverTimezone=America/Chicago"/>
             <property name="eclipselink.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
