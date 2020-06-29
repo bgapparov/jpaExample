@@ -1,9 +1,10 @@
 package model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import jdk.internal.dynalink.linker.LinkerServices;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Departament {
@@ -13,6 +14,9 @@ public class Departament {
     private Integer id;
     private String name;
     private int amountOfEmployees;
+
+    @OneToMany(mappedBy = "departament",cascade = CascadeType.ALL)
+    private List<Employee> employees = new ArrayList<>();
 
     public Departament() {
     }
@@ -47,11 +51,19 @@ public class Departament {
         this.amountOfEmployees = amountOfEmployees;
     }
 
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
+
     @Override
     public String toString() {
         return "Departament{" +
-                "id=" + id +
-                ", amountOfEmployees=" + amountOfEmployees + "name=" + name +
+                "id= " + id +
+                ", amountOfEmployees= " + amountOfEmployees + " name = " + name + "," + " employee = "  + getEmployees().get(1) + " " +
                 '}';
     }
 }

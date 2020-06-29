@@ -1,13 +1,20 @@
 package model;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @DiscriminatorValue("Employee")
 public class Employee extends Person {
     private float salary;
     private int office;
+
+    @ManyToOne
+    private Departament departament;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Car car;
 
     public Employee() {
     }
@@ -37,6 +44,22 @@ public class Employee extends Person {
 
     public void setOffice(int office) {
         this.office = office;
+    }
+
+    public Departament getDepartament() {
+        return departament;
+    }
+
+    public void setDepartament(Departament departament) {
+        this.departament = departament;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
     }
 
     @Override

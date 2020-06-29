@@ -4,9 +4,11 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@NamedQuery(name="selectPersonName", query ="SELECT p.name FROM Person p")
+@NamedQuery(name="findAllPeopleAge", query="SELECT p.age FROM Person p")
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "P_Type")
-public abstract class Person {
+public abstract class Person{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

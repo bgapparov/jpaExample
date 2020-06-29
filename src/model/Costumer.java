@@ -1,7 +1,7 @@
 package model;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.security.PrivateKey;
 
 @Entity
 @DiscriminatorValue("Costumer")
@@ -9,6 +9,9 @@ public class Costumer extends Person {
 
     private Integer phone;
     private String zipcode;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Car car;
 
     public Costumer() {
     }
@@ -34,9 +37,18 @@ public class Costumer extends Person {
         this.zipcode = zipcode;
     }
 
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
     @Override
     public String toString() {
-        return "Costumer{" +
+        System.out.println();
+        return "Costumer: {" +
                 "name='" + super.getName() + '\'' +
                 ", phone=" + phone +
                 ", zipcode='" + zipcode + '\'' +
